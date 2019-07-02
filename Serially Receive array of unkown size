@@ -1,0 +1,40 @@
+1. First method is to have a stop bit in the end it can be any character or symbol like 's'.
+
+2. Second method is if you yourself entering the string to be sent and yourself receiving it then first calculate the the length of the 
+   string entered by you and then run the loop for that much time. (NOTE: Counting the length is also a problem)
+   Example : say length of string =6, then
+                                          int count = 0;
+                                          char str[len-1];
+                                          while(1)
+                                          {
+                                           if(Serial.available())
+                                           {
+                                           str[count] = Serial.read();    // Store the variable in str[]array
+                                           count++;                      // keep incrementing the count variable
+                                           }
+                                           if(count >= len)              // Monitor the count variable and when it becomes = length
+                                           {                             // of the string then write a break condition
+                                           
+                                           count=0;                         //Make count =0;
+                                           break;                           // The condition will break and will come out of while loop
+                                           
+                                           }
+                                           
+3. Third you can increment a variable as timer and for that time receive the data (Note: Many times misses the data)
+   Example:   
+                    int timer=0;
+                    char str[20];            // Create a random size array
+                    int count = 0;
+                    while(!Serial.available())
+                    while(timer<2000)         //the loop runs for 2000 times, so in most cases the full data sting or array is received. 
+                    {
+                    if(Serial.available())   //When ever data found, enter this condition
+                    {
+                    str[count] = Serial.read();  // store the data in str[] array
+                    count++;
+                    }
+                    timer++;
+                    }
+                    
+                    
+                                           
